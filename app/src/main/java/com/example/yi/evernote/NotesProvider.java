@@ -4,6 +4,7 @@ import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.content.UriMatcher;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.support.annotation.Nullable;
 
@@ -23,18 +24,23 @@ public class NotesProvider extends ContentProvider {
 
     static {
         uriMatcher.addURI(AUTHORITY, BASE_PATH, NOTES);
-//        uriMatcher.addURI(AUTHORITY, BASE_PATH, );
+        uriMatcher.addURI(AUTHORITY, BASE_PATH + "/#", NOTES_ID);
     }
 
+    private SQLiteDatabase database;
     @Override
     public boolean onCreate() {
-        return false;
+        DBOpenHelper helper = new DBOpenHelper(getContext());
+        database = helper.getWritableDatabase();
+        return true;
     }
 
     @Nullable
     @Override
-    public Cursor query(Uri uri, String[] strings, String s, String[] strings1, String s1) {
-        return null;
+    public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
+        return database.query(DBOpenHelper.TABLE_NOTES, DBOpenHelper.ALL_COLUMNS,
+                selection, null, null, null,
+                DBOpenHelper.NOTE_CREATED + " DESC");
     }
 
     @Nullable
