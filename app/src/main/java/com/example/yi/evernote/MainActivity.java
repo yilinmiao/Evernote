@@ -27,8 +27,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
 //        Cursor cursor = getContentResolver().query(NotesProvider.CONTENT_URI,DBOpenHelper.ALL_COLUMNS, null, null, null, null);
         String[] from = {DBOpenHelper.NOTE_TEXT};
-        int[] to = {android.R.id.text1};
-        cursorAdapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_1, null, from, to, 0);
+        int[] to = {R.id.tvNote};
+        cursorAdapter = new SimpleCursorAdapter(this, R.layout.note_list_item, null, from, to, 0);
         ListView list = (ListView) findViewById(android.R.id.list);
         list.setAdapter(cursorAdapter);
 
