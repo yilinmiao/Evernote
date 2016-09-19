@@ -1,2 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="app_name">Evernote</string>
+    <string name="are_you_sure">Are you sure?</string>
+    <string name="all_deleted">All notes deleted</string>
+    <string name="title_activity_editor">Evernote</string>
+</resources>
