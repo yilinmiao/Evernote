@@ -28,12 +28,13 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        insertNote("New note");
+//        insertNote("New note");
 
 //        Cursor cursor = getContentResolver().query(NotesProvider.CONTENT_URI,DBOpenHelper.ALL_COLUMNS, null, null, null, null);
-        String[] from = {DBOpenHelper.NOTE_TEXT};
-        int[] to = {R.id.tvNote};
-        cursorAdapter = new SimpleCursorAdapter(this, R.layout.note_list_item, null, from, to, 0);
+//        String[] from = {DBOpenHelper.NOTE_TEXT};
+//        int[] to = {R.id.tvNote};
+//        cursorAdapter = new SimpleCursorAdapter(this, R.layout.note_list_item, null, from, to, 0);
+        cursorAdapter = new NotesCursorAdapter(this, null, 0);
         ListView list = (ListView) findViewById(android.R.id.list);
         list.setAdapter(cursorAdapter);
 
