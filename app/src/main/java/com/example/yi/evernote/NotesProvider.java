@@ -14,7 +14,7 @@ import android.support.annotation.Nullable;
 public class NotesProvider extends ContentProvider {
     private static final String AUTHORITY = "com.example.yi.evernote.notesprovider";
     private static final String BASE_PATH = "notes";
-    public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + BASE_PATH );
+    public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + BASE_PATH);
 
     // Constant to identify the requested operation
     private static final int NOTES = 1;
@@ -22,12 +22,15 @@ public class NotesProvider extends ContentProvider {
 
     private static final UriMatcher uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 
+    public static final String CONTENT_ITEM_TYPE = "Note";
+
     static {
         uriMatcher.addURI(AUTHORITY, BASE_PATH, NOTES);
         uriMatcher.addURI(AUTHORITY, BASE_PATH + "/#", NOTES_ID);
     }
 
     private SQLiteDatabase database;
+
     @Override
     public boolean onCreate() {
         DBOpenHelper helper = new DBOpenHelper(getContext());
